@@ -1,0 +1,23 @@
+[package]
+name = "stripe-csv"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+authors = ["Kosta S. <github.operation464@simplelogin.com>"]
+description = "Command line utility to analyze and process Stripe CSV exports"
+keywords = ["stripe", "csv"]
+repository = "https://github.com/Kosta-Git/stripe-csv/"
+
+[lints.clippy]
+pedantic = { level = "deny", priority = -1 }
+nursery = { level = "deny", priority = -1 }
+unwrap_used = "deny"
+
+[dependencies]
+clap = { version = "4.5.54", features = ["derive"] }
+thiserror = { version = "2.0.17" }
+csv = { version = "1.4.0" }
+serde = { version = "1.0.228", features = ["derive"] }
+
+[dev-dependencies]
+tempfile = "3.24.0"
