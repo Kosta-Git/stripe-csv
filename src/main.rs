@@ -4,15 +4,15 @@ use stripe_csv::{
     parser,
 };
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
+fn main() {
     let arguments = Args::parse();
 
-    match arguments.csv_type {
-        CsvType::Fees => {
-            parser::fees::parse(arguments.file, arguments.output_file)?;
-        }
+    if let Err(error) = match arguments.csv_type {
+        CsvType::Fees => parser::fees::parse(arguments.file, arguments.output_file),
+    } {
+        eprintln!("Error: {error}");
+        std::process::exit(1);
     }
 
     println!("done.");
-    Ok(())
 }
