@@ -68,6 +68,7 @@ impl std::fmt::Display for AccountFees {
 /// File was not found or could not be read.
 /// Unable to parse the CSV file.
 /// Unable to create an Entry from a CSV line.
+/// Output file could not be created or written to.
 pub fn parse(file: PathBuf, output: Option<PathBuf>) -> Result<(), Box<dyn std::error::Error>> {
     if !file.exists() {
         return Err(Error::FileNotFound(file).into());
